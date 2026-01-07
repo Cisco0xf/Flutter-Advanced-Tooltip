@@ -163,6 +163,12 @@ class _SkillItemState extends State<SkillItem>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animation,
@@ -245,6 +251,12 @@ class _CustomToolTipState extends State<CustomToolTip> {
   void _hideCustomToolTip() {
     _targetOverlay?.remove();
     _targetOverlay = null;
+  }
+
+  @override
+  void dispose() {
+    _hideCustomToolTip();
+    super.dispose();
   }
 
   OverlayEntry _buildOverlay() {
